@@ -8,35 +8,35 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getPost } from "@/app/api/route";
-import { useEffect } from "react";
+// import { getPost } from "@/app/api/route";
+// import { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2Icon } from "lucide-react";
 import { deletePost } from "@/app/api/route";
 
-export const PostCard = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
+  // const [posts, setPosts] = useState([]);
+  // const [loading, setLoading] = useState(true);
   // console.log(getPost());
-  const getPostData = async () => {
-    try {
-      const response = await getPost();
-      //console.log(response);
-      // console.log("Posts fetched successfully:", response.data);
-      setPosts(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
+  // const getPostData = async () => {
+  //   try {
+  //     const response = await getPost();
+  //     //console.log(response);
+  //     // console.log("Posts fetched successfully:", response.data);
+  //     setPosts(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error("Error fetching posts:", error);
 
-      setLoading(false);
-      // Handle error appropriately, e.g., show a notification or alert
-      alert("Failed to fetch posts Due to network problem please try again.");
-    }
-  };
-  useEffect(() => {
-    getPostData();
-  }, []);
+  //     setLoading(false);
+  //     // Handle error appropriately, e.g., show a notification or alert
+  //     alert("Failed to fetch posts Due to network problem please try again.");
+  //   }
+  // };
+  // useEffect(() => {
+  //   getPostData();
+  // }, []);
 
   const handleDeleteButtonClick = async (id) => {
     const res = await deletePost(id);
@@ -57,13 +57,13 @@ export const PostCard = () => {
       ) : (
         <div className="  md:grid grid-cols-2 lg:grid-cols-3 p-4 gap-4.5">
           {posts.length > 0 ? (
-            posts.map((post) => (
+            posts.map((post, index) => (
               <Card
-                key={post.id}
+                key={index}
                 className=" lg:w-[330px] w-[350px] bg-white shadow-lg"
               >
                 <CardHeader>
-                  <CardTitle>{post.id}</CardTitle>
+                  <CardTitle>{index + 1}</CardTitle>
                   <CardDescription>{post.title}</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -100,7 +100,9 @@ export const PostCard = () => {
               </Card>
             ))
           ) : (
-            <div className="text-center text-gray-500">No posts available.</div>
+            <div className="flex justify-center items-center h-screen">
+              <Loader2Icon className="animate-spin  text-blue-500 size-16 " />
+            </div>
           )}
         </div>
       )}

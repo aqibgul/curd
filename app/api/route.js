@@ -12,6 +12,6 @@ export const deletePost = async (id) => {
   return api.delete(`/posts/${id}`);
 };
 
-export const createPost = async (post) => {
+export const addPost = async (post) => {
   return api.post("/posts", post);
 };
