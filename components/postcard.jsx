@@ -84,9 +84,7 @@ export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
                     size="sm"
                     onClick={() => {
                       if (
-                        window.confirm(
-                          `Are you sure you want to delete post ${post.id}?`
-                        )
+                        window.confirm(`Are you sure you want to delete post ?`)
                       ) {
                         handleDeleteButtonClick(post.id);
                       } else {
