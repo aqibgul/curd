@@ -37,7 +37,7 @@ export default function Home() {
       <div className="  container mx-auto  bg-amber-200 pt-5  ">
         <div className=" flex flex-col items-center gap-3.5    w-full ">
           <div className="flex justify-center items-center  ">
-            <h1 className=" font-mono text-4xl p-2 text-center ">
+            <h1 className=" font-mono text-2xl md:text-4xl p-2 text-center ">
               Welcome to My CRUD App
             </h1>
           </div>
