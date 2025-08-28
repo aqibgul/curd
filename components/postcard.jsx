@@ -16,27 +16,7 @@ import { Loader2Icon } from "lucide-react";
 import { deletePost } from "@/app/api/route";
 
 export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
-  // const [posts, setPosts] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // console.log(getPost());
-  // const getPostData = async () => {
-  //   try {
-  //     const response = await getPost();
-  //     //console.log(response);
-  //     // console.log("Posts fetched successfully:", response.data);
-  //     setPosts(response.data);
-  //     setLoading(false);
-  //   } catch (error) {
-  //     console.error("Error fetching posts:", error);
-
-  //     setLoading(false);
-  //     // Handle error appropriately, e.g., show a notification or alert
-  //     alert("Failed to fetch posts Due to network problem please try again.");
-  //   }
-  // };
-  // useEffect(() => {
-  //   getPostData();
-  // }, []);
+  const [updatePost, setUpdatePost] = useState({});
 
   const handleDeleteButtonClick = async (id) => {
     const res = await deletePost(id);
@@ -46,6 +26,10 @@ export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
       alert("Failed to delete post. Please try again.");
     }
     console.log("Delete response:", res);
+  };
+  const handleEditButtonClick = (post) => {
+    setUpdatePost(post);
+    console.log("Edit post:", post);
   };
 
   return (
@@ -74,7 +58,7 @@ export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
                     className="bg-green-600 text-amber-50"
                     variant="outline"
                     size="sm"
-                    onClick={() => alert(`Editing post ${post.id}`)}
+                    onClick={() => handleEditButtonClick(post)}
                   >
                     Edit
                   </Button>
