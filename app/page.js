@@ -34,10 +34,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="  container mx-auto  bg-amber-200 pt-5 pl-4 ">
+      <div className="  container mx-auto  bg-amber-200 pt-5  ">
         <div className=" flex flex-col items-center gap-3.5    w-full ">
           <div className="flex justify-center items-center  ">
-            <h1 className=" font-mono text-4xl p-2 ">Welcome to My CRUD App</h1>
+            <h1 className=" font-mono text-4xl p-2 text-center ">
+              Welcome to My CRUD App
+            </h1>
           </div>
           <CrudInput
             posts={posts}
