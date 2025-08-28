@@ -44,7 +44,7 @@ export const PostCard = ({ posts, setPosts, loading, setLoading }) => {
             posts.map((post, index) => (
               <Card
                 key={index}
-                className=" lg:w-[330px] w-[350px] bg-white shadow-lg"
+                className="  lg:w-[330px] w-[300px] mb-5  bg-white shadow-lg"
               >
                 <CardHeader>
                   <CardTitle>{index + 1}</CardTitle>

@@ -12,14 +12,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "CRUD App   | Next.js & JSONPlaceholder",
-
-  titleTemplate: "%s | CRUD App",
+  title: {
+    default: "My CRUD App | Next.js & JSONPlaceholder",
+    template: "%s | My CRUD App",
+  },
 
   description:
     "A simple CRUD application using Next.js and JSONPlaceholder API",
   icons: {
     icon: "/window.svg",
+  },
+  openGraph: {
+    title: "My CRUD App | Next.js & JSONPlaceholder",
+    description:
+      "A simple CRUD application using Next.js and JSONPlaceholder API",
+    url: "https://my-crud-app.vercel.app/",
+    siteName: "My CRUD App",
+    images: [
+      {
+        url: "https://my-crud-app.vercel.app/og-image.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en-US",
+    type: "website",
   },
 
   keywords: [
@@ -42,7 +59,7 @@ export default function RootLayout({ children }) {
       <body
         className={` ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div>{children}</div>
       </body>
     </html>
   );

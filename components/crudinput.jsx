@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addPost } from "@/app/api/route";
 
 export const CrudInput = ({ key, posts, setPosts }) => {
@@ -43,12 +43,15 @@ export const CrudInput = ({ key, posts, setPosts }) => {
     setData({ title: "", body: "" });
   };
 
+  useEffect(() => {
+    console.log("Posts updated:", posts);
+  }, []);
+
   return (
     <>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex justify-around gap-2.5">
+        <div className="flex flex-col sm:flex-row sm:justify-around  gap-2.5">
           <Input
-            key={key}
             className="bg-green-50"
             type="text"
             placeholder="Enter title"
@@ -57,7 +60,6 @@ export const CrudInput = ({ key, posts, setPosts }) => {
             onChange={handleInputChange}
           />
           <Input
-            key={key}
             className="bg-green-50"
             type="text"
             placeholder="Enter content"
