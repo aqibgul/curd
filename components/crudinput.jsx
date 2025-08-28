@@ -41,6 +41,7 @@ export const CrudInput = ({ key, posts, setPosts }) => {
 
     // Reset the form fields after submission
     setData({ title: "", body: "" });
+    alert("Post added successfully");
   };
 
   useEffect(() => {
